@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+    />
+    <link rel="stylesheet" href="phonepay.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="loadingScreenContainer">
+        <div id="loaderHeader"></div>
+        <div id="loader"></div>
+        <i class="ri-check-line" id="successTick"></i>
+        <h3 id="processing">Processing Payment</h3>
+        <h3 id="accountHolderName"></h3>
+        <span id="yourAmount"></span>
+        <span id="successful">Successful.</span>
+        <h3 id="alert">Please do not press or close the app</h3>
+        <a href="screen2.html"><div id="doneBox"></div></a>
+        <a href="screen2.html"><h3 id="done">DONE</h3></a>
+        <audio src="PhonePay.MP3" id="myAudio"></audio>
+    </div>
+    </div>
+    <script>
+      const RUPEES = document.getElementById("yourAmount").innerHTML = localStorage.getItem("moneyAmount");
+      const NAME = document.getElementById("accountHolderName").innerHTML = localStorage.getItem("textvalue");
+      const mySuccessTick = document.getElementById("successTick");
+      const myDoneBox = document.getElementById("doneBox");
+      const myDone = document.getElementById("done");
+      const success = document.getElementById("successful");
+      const myHolderName = document.getElementById("accountHolderName");
+      const processingPayment = document.getElementById("processing");
+      const myHeader = document.getElementById("loaderHeader");
+      const myLoader = document.getElementById("loader");
+
+      const myTimeout = setTimeout(paymentSuccessful, 5000);
+        function paymentSuccessful() {
+          document.getElementById("myAudio").play();91
+          document.getElementById("alert").innerHTML = ""
+          myHeader.style.backgroundColor = "#4AAF4E"
+          myLoader.style.border = "9px solid #46be4a"
+          processingPayment.innerHTML = `Payment of ${RUPEES} to`
+          myHolderName.innerHTML = `${NAME}`;
+          myHolderName.style.color = "black";
+          success.style.color = "black";
+          myDoneBox.style.backgroundColor = "#21182B";
+          myDoneBox.style.borderTop = "2px solid #1e1111";
+          myDone.style.color = "#A363EB";
+          mySuccessTick.style.color = "#46be4a"
+        }
+        function myStopFunction() {
+          clearTimeout(myTimeout);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PhonePay</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="phonepay.css" />
+    <script src="script.js" defer></script>
+    <script>
+      function passValue() {
+        const customerAmount = document.getElementById("enterAmount").value;
+        const customerName = document.getElementById("optMsg").value;
+        localStorage.setItem("textvalue", customerName);
+        localStorage.setItem("moneyAmount", customerAmount);
+        return false;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h2 id="pay">Pay</h2>
+      </div>
+      <div id="money-box">
+        <div id="profile"></div>
+        <h4 id="letter">S</h4>
+        <h5 id="view-history">VIEW HISTORY</h5>
+        <form action="screen3.html">
+          <input type="number" id="enterAmount" placeholder="Enter amount" />
+          <input type="text" placeholder="Add a message (optional)" id="optMsg" />
+        </form>
+      </div>
+      <h1 id="circleSymbol">S</h1>
+      <i class="ri-arrow-left-line"></i>
+      <h3 id="rupeeSymbol">₹</h3>
+      <h3 id="merchantName">Shop</h3>
+      <h3 id="bankingName">Banking name : MINA..</h3>
+      <i class="ri-question-line"></i>
+      <a href="screen3.html"
+        ><div id="proceedToPay" onclick="passValue()">
+          <h4 id="proceedText">PROCEED TO PAY</h4>
+        </div></a>
+    </div>
+  </body>
+</html>

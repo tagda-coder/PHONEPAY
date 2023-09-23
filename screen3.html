@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PhonePay</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="phonepay.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="screen3Container">
+      <h4 id="bankName">Union Bank Of India</h4>
+      <h2 id="bankNumber">XXXX7303</h2>
+      <div id="holderInfoBox"></div>
+      <h3 id="personToSend">To:<br />Sending:</h3>
+      <h3 id="personNameToSend"><span id="MyCustomerName"></span></h3>
+      <h3 id="rupeeSymbol2">₹</h3>
+      <h3 id="amountToSend"><span id="MyCustomerAmount"></span></h3>
+      <h4 id="enter4digitNumber">ENTER 4-DIGIT UPI PIN</h4>
+      <input
+        type="password"
+        pattern="[0-9]*"
+        inputmode="numeric"
+        maxlength="1"
+        class="inputs"
+        id="enterYourPinBox1"
+        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+        ;
+      />
+      <input
+        type="password"
+        pattern="[0-9]"
+        inputmode="numeric"
+        maxlength="1"
+        class="inputs"
+        id="enterYourPinBox2"
+        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+        ;
+      />
+      <input
+        type="password"
+        pattern="[0-9]"
+        inputmode="numeric"
+        maxlength="1"
+        class="inputs"
+        id="enterYourPinBox3"
+        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+        ;
+      />
+      <input
+        type="password"
+        pattern="[0-9]"
+        inputmode="numeric"
+        class="inputs"
+        maxlength="1"
+        id="enterYourPinBox4"
+        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
+        ;
+      />
+      <div id="alertMsgBox"></div>
+      <h3 id="alertText">
+        You are transferring money from <br />
+        your Union Bank Of India account to <br />
+        SHOP MERCHANT CUSTOMER
+      </h3>
+      <img src="warning.png" alt="" id="warningImg" />
+      <a href="loader.html"
+        ><i class="ri-check-line"></i
+      ></a>
+      <i class="ri-close-line" onclick="cutAllInput()"></i>
+      <img src="upi.jpeg" alt="" id="upiImage" />
+      <div id="numPad">
+        <button class="digit" id="one" onclick="press1()">1</button>
+        <button class="digit" id="two" onclick="press2()">2</button>
+        <button class="digit" id="three" onclick="press3()">3</button><br />
+        <button class="digit" id="four" onclick="press4()">4</button>
+        <button class="digit" id="five" onclick="press5()">5</button>
+        <button class="digit" id="six" onclick="press6()">6</button><br />
+        <button class="digit" id="seven" onclick="press7()">7</button>
+        <button class="digit" id="eight" onclick="press8()">8</button>
+        <button class="digit" id="nine" onclick="press9()">9</button><br />
+        <button class="digit zero" id="zero" onclick="press0()">0</button>
+      </div>
+      <div id="circle"></div>
+    </div>
+    <script>
+      $(".inputs").keyup(function () {
+        if (this.value.length == this.maxLength) {
+          $(this).next(".inputs").focus();
+        }
+      });
+      function press9() {
+        const pressValue9 = (document.getElementById("nine").innerHTML = 9);
+        document.getElementById("enterYourPinBox1").value = pressValue9;
+      }
+      function press5() {
+        const pressValue5 = (document.getElementById("five").innerHTML = 5);
+        document.getElementById("enterYourPinBox2").value = pressValue5;
+      }
+      function press0() {
+        const pressValue0 = (document.getElementById("zero").innerHTML = 0);
+        document.getElementById("enterYourPinBox3").value = pressValue0;
+      }
+      function press8() {
+        const pressValue8 = (document.getElementById("eight").innerHTML = 8);
+        document.getElementById("enterYourPinBox4").value = pressValue8;
+      }
+      function press1() {
+        const pressValue1 = (document.getElementById("one").innerHTML = 1);
+        document.getElementById("enterYourPinBox1").value = pressValue1;
+      }
+      function press2() {
+        const pressValue2 = (document.getElementById("two").innerHTML = 2);
+        document.getElementById("enterYourPinBox2").value = pressValue2;
+      }
+      function press3() {
+        const pressValue3 = (document.getElementById("three").innerHTML = 3);
+        document.getElementById("enterYourPinBox3").value = pressValue3;
+      }
+      function press4() {
+        const pressValue4 = (document.getElementById("four").innerHTML = 4);
+        document.getElementById("enterYourPinBox4").value = pressValue4;
+      }
+      function press6() {
+        const pressValue6 = (document.getElementById("six").innerHTML = 6);
+        document.getElementById("enterYourPinBox1").value = pressValue6;
+      }
+      function press7() {
+        const pressValue7 = (document.getElementById("seven").innerHTML = 7);
+        document.getElementById("enterYourPinBox3").value = pressValue7;
+      }
+
+      function cutAllInput() {
+        location.reload();
+      }
+      document.getElementById("MyCustomerName").innerHTML = localStorage.getItem("textvalue");
+      document.getElementById("MyCustomerAmount").innerHTML = localStorage.getItem("moneyAmount");
+    </script>
+  </body>
+</html>
